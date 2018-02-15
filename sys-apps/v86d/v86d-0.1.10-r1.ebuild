@@ -13,7 +13,7 @@ SRC_URI="https://github.com/sarnold/v86d/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug x86emu"
+IUSE="debug"
 
 DEPEND="dev-libs/libx86"
 RDEPEND="${DEPEND}"
@@ -25,13 +25,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-#	if [ -z "$(grep V86D ${ROOT}/usr/src/linux/include/uapi/linux/connector.h)" ]; then
-#		## old path: ${ROOT}/usr/$(get_libdir)/klibc/include/linux/connector.h)
-#		eerror "You need to compile klibc against a kernel tree patched with uvesafb"
-#		eerror "prior to merging this package."
-#		die "Kernel not patched with uvesafb."
-#	fi
-
 	epatch "${FILESDIR}"/01_use-external-libx86.patch \
 		"${FILESDIR}"/02_dont-include-kernel.patch
 
