@@ -1,0 +1,15 @@
+--- a/tools/bneptest.c	2018-02-14 21:15:24.156802496 -0800
++++ b/tools/bneptest.c	2018-02-14 21:52:01.223774233 -0800
+@@ -35,8 +35,11 @@
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+ #include <linux/sockios.h>
++#include <string.h>
+ #include <netinet/in.h>
+-#include <linux/if_bridge.h>
++
++/* taken from <linux/if_bridge.h> */
++#define BRCTL_SET_BRIDGE_FORWARD_DELAY 8
+ 
+ #include <glib.h>
+ 
